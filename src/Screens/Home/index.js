@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
-import {Text, View, Image, ScrollView} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 const Tab = createMaterialTopTabNavigator();
-import {createStackNavigator} from '@react-navigation/stack';
-import logo from '../../assets/images/netgra.png';
 
 import Present from './Present';
 import Series from './Series';
-const Stack = createStackNavigator();
 
 function HomeScreen({navigation}) {
   return <Present />;
@@ -20,7 +16,7 @@ function RandomScreen() {
 function MyTabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Jogadores"
+      initialRouteName="Pagina inicial"
       tabBarOptions={{
         indicatorStyle: {
           borderBottomColor: '#4aa5da',

@@ -12,5 +12,16 @@ export const Background = styled(LinearGradient).attrs({
 `;
 
 export const TextHeader = styled.Text`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-weight: bold;
   color: white;
+  text-align: center;
+`;
+
+export const SeriesListView = styled.ScrollView.attrs({})``;
+export const SeriesList = styled.View`
+  justify-content: center;
+  align-items: center;
 `;

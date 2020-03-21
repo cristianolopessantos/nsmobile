@@ -11,9 +11,9 @@ import {
   CarouselBackgroundView,
 } from './styles';
 
-const bannerThe100 = require('../../assets/images/banners/the100.jpg');
-const bannerStranger = require('../../assets/images/banners/stranger.jpg');
-const bannerArrow = require('../../assets/images/banners/legends.jpg');
+const bannerThe100 = require('../../../assets/images/banners/the100.jpg');
+const bannerStranger = require('../../../assets/images/banners/stranger.jpg');
+const bannerArrow = require('../../../assets/images/banners/legends.jpg');
 
 const windowWidth = Dimensions.get('window').width;
 
