@@ -16,11 +16,16 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   align-items: center;
 `;
 
-export const Background = styled(LinearGradient).attrs({
-  colors: ['#32536B', '#8DA5B8'],
-})`
-width: 100%
-height: ${height}px;
+// export const Background = styled(LinearGradient).attrs({
+//   colors: ['#32536B', '#8DA5B8'],
+// })`
+// width: 100%
+// height: ${height}px;
+// `
+
+export const Background = styled.ImageBackground`
+  flex:1;
+  width: 100%
 `
 
 export const ImageLogo = styled.ImageBackground`
@@ -63,8 +68,8 @@ export const TextToutch = styled.TouchableOpacity`
 
 `
 export const TextLink = styled.Text`
-  color: white;
-  font-size:16px;
+  color: #fff;
+  font-size:15px;
   font-weight: bold;
   margin-top:10px;
 `

@@ -1,8 +1,9 @@
 import React, {useRef} from 'react';
 import Button from '../../Components/Button';
-import ImageLogo from '../../Components/ImageLogo';
+
 
 import { Container, Background,TextToutch, TextLink, Form, FormInput} from './styles';
+const back = require('../../../assets/images/back_login.png')
 
 export default function SignIn({navigation}) {
   const passwordRef = useRef();
@@ -12,9 +13,8 @@ export default function SignIn({navigation}) {
     navigation.navigate('Home')
   }
   return (
-    <Background>
+    <Background source={back}>
       <Container>
-        <ImageLogo src={'PIPOCA'}></ImageLogo>
         <Form>
           <FormInput             
               keyboardType="email-address"

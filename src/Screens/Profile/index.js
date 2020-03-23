@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { View,Text,ScrollView } from 'react-native';
 import Button from '../../Components/Button';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -9,15 +9,16 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
 import {MyTopTabsProfile} from '../../routes'
 
-import { Background, Container, ContainerView, ProfileView, ProfileArea, ProfileInfos } from './styles';
+import { Background, Container, ProfileView, ProfileInfos, Form, FormInput } from './styles';
 
 export default function Profile({navigation}) {
 
-
+  const passwordRef = useRef();
   function handleSubmit() {
     // dispatch(signInRequest(email, password));
     navigation.navigate('Voltar')
   }
+
 
   return (
     <Background>
@@ -44,16 +45,25 @@ export default function Profile({navigation}) {
               </ProfileInfos>
             </View>
 
-            <View tabLabel='Segurança'>    
-              <ProfileInfos>
-                <SimpleLineIcons name="user" color={'#4aa5da'} size={25} style={{marginRight:10}}/>
-                <Text>Cristiano Lopes </Text>
-              </ProfileInfos>
-              <ProfileInfos>
-                <SimpleLineIcons name="envelope" color={'#4aa5da'} size={25} style={{marginRight:10}}/>
-                <Text>cris@b.com</Text>
-              </ProfileInfos>
-            
+            <View tabLabel='Segurança' style={{justifyContent: 'center', alignItems: 'center'}}>    
+          
+              <Form>
+                <FormInput
+                  secureTextEntry
+                  placeholder="Digite sua senha"
+                  returnKeyType="next"
+                  onSubmitEditing={() => passwordRef.current.focus()}
+                />
+
+                <FormInput
+                  secureTextEntry
+                  placeholder="Digite sua senha novamente"
+                  returnKeyType="send"
+                  onSubmitEditing={handleSubmit}
+                />
+              </Form>
+              <Button onPress={handleSubmit} backColor >Redefinir senha</Button>
+              
             </View>
             <Text tabLabel='Preferências'>project</Text>
           </ScrollableTabView>

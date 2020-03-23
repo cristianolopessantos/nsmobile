@@ -29,10 +29,14 @@ export const TextLink = styled.Text`
 export const FormInput = styled(Input)`
   margin-top: 10px;
 `;
-export const Background = styled(LinearGradient).attrs({
-  colors: ['#32536B', '#8DA5B8'],
-})`
-width: 100%
-height: ${height}px;
-`
+// export const Background = styled(LinearGradient).attrs({
+//   colors: ['#32536B', '#8DA5B8'],
+// })`
+// width: 100%
+// height: ${height}px;
+// `
 
+export const Background = styled.ImageBackground`
+  flex:1;
+  width: 100%
+`

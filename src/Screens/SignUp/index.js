@@ -1,6 +1,8 @@
 import React, {useRef} from 'react';
 import Button from '../../Components/Button';
 import ImageLogo from '../../Components/ImageLogo';
+const back = require('../../../assets/images/back_login.png')
+
 import { Container, Background, Form, FormInput, TextLink, TextToutch } from './styles';
 
 
@@ -16,9 +18,9 @@ export default function SignUp({navigation}) {
   const emailRef = useRef();
   const emailConfirmRef = useRef();
   return (
-    <Background>
+    <Background source={back}>
       <Container>
-        <ImageLogo src={'HIPPIE'} />
+        
         <Form>
           <FormInput             
                 keyboardType="default"

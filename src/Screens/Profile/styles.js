@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import {Dimensions} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-
+import Input from '../../Components/Input'
 const width = Dimensions.get('window').width;
 
 export const Container = styled.View`
@@ -32,3 +32,12 @@ margin-top:10px;
 align-items: center;
 margin-right: 10px;
 `
+
+export const Form = styled.View`
+  align-self: stretch;
+  margin-top: 50px;
+`;
+
+export const FormInput = styled(Input)`
+  margin-bottom: 10px;
+`;

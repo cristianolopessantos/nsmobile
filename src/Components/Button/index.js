@@ -5,7 +5,7 @@ import { Container, TextButton, ContainerExit } from './styles';
 
 export default function Button({children, loading, backColor, ...rest}) {
   return (
-    <Container {...rest} underlayColor={'#4aa5da'} >
+    <Container {...rest} underlayColor={'#4aa5db'} >
       {loading ? <ActivityIndicator size="small" color="#fff" /> : <TextButton>{children}</TextButton>}
     </Container>
   );
