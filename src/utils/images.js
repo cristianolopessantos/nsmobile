@@ -1,9 +1,6 @@
  images = {
-  LOGO: require('../assets/images/logo.png'),
-  PIPOCA: require('../assets/images/pipoca.png'),
-  ZOMBIE: require('../assets/images/spooky.png'),
-  HIPPIE: require('../assets/images/hippie.png'),
-  DRACULA: require('../assets/images/dracula.png'),
+  PIPOCA: require('../../assets/images/pipoca.png'),
+  HIPPIE: require('../../assets/images/hippie.png'),
   ARROW: 'https://artworks.thetvdb.com/banners/posters/257655-19.jpg',
   FEAR : 'https://artworks.thetvdb.com/banners/posters/290853-8.jpg',
   RICK : 'https://artworks.thetvdb.com/banners/posters/275274-2.jpg',
