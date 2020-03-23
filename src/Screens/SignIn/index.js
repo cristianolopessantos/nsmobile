@@ -7,14 +7,14 @@ import { Container, Background,TextToutch, TextLink, Form, FormInput} from './st
 export default function SignIn({navigation}) {
   const passwordRef = useRef();
 
-  function handleSubmit({ email, password }) {
+  function handleSubmit() {
     // dispatch(signInRequest(email, password));
-    alert('Entrou arrombado')
+    navigation.navigate('Home')
   }
   return (
     <Background>
       <Container>
-        <ImageLogo src={'LOGO'}></ImageLogo>
+        <ImageLogo src={'PIPOCA'}></ImageLogo>
         <Form>
           <FormInput             
               keyboardType="email-address"
@@ -34,7 +34,7 @@ export default function SignIn({navigation}) {
           />
         </Form>
       
-        <Button text={'Entrar'}></Button>
+        <Button onPress={handleSubmit}>Entrar</Button>
         <TextToutch onPress={()=>{
           navigation.navigate('SignUp')
         }}><TextLink>Criar conta gratuita</TextLink></TextToutch>

@@ -1,14 +1,14 @@
 import React, {useRef} from 'react';
 import Button from '../../Components/Button';
 import ImageLogo from '../../Components/ImageLogo';
-import { Container, Background, Form, FormInput } from './styles';
+import { Container, Background, Form, FormInput, TextLink, TextToutch } from './styles';
 
 
-export default function SignUp() {
+export default function SignUp({navigation}) {
 
   function handleSubmit({ email, password }) {
     // dispatch(signInRequest(email, password));
-    alert('Cadastro feito, viado')
+    navigation.navigate('Home')
   }
 
   const passwordRef = useRef();
@@ -18,7 +18,7 @@ export default function SignUp() {
   return (
     <Background>
       <Container>
-        <ImageLogo src={'ZOMBIE'} />
+        <ImageLogo src={'HIPPIE'} />
         <Form>
           <FormInput             
                 keyboardType="default"
@@ -63,7 +63,10 @@ export default function SignUp() {
             onSubmitEditing={handleSubmit}
           />
         </Form>
-        <Button text={'Cadastrar'}></Button>
+        <Button onPress={handleSubmit}>Cadastrar</Button>
+        <TextToutch onPress={()=>{
+          navigation.navigate('Voltar')
+        }}><TextLink>Já possuo conta</TextLink></TextToutch>
       </Container>
     </Background>
   );

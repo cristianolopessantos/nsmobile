@@ -8,7 +8,7 @@ const width = Dimensions.get('window').height;
 export const Container = styled(RectButton)`
 height: 50px;
 width: ${width/3}px;
-background: #6064a1;
+background: #32536B;
 border-radius: 4px;
 margin-top:10px;
 align-items: center;

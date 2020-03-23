@@ -17,7 +17,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 `;
 
 export const Background = styled(LinearGradient).attrs({
-  colors: ['#7665B8', '#5F8EAD'],
+  colors: ['#32536B', '#8DA5B8'],
 })`
 width: 100%
 height: ${height}px;

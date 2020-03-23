@@ -2,29 +2,29 @@ import React, {Component} from 'react';
 
 import {ContainerBehind, Container, Background, TextLabel} from './styles';
 
-import CarouselComponent from '../../../Components/Carousel';
-import SlideSeriesScroll from '../../../Components/SlideSeriesScroll';
+import CarouselComponent from '../../Components/Carousel';
+import SlideSeriesScroll from '../../Components/SlideSeriesScroll';
 
-const posterArrow = require('../../../../assets/images/posters/arrow.jpg');
-const posterFear = require('../../../../assets/images/posters/ftwd.jpg');
-const rick = require('../../../../assets/images/posters/rick.jpg');
-const pose = require('../../../../assets/images/posters/pose.jpg');
-const brooklyn = require('../../../../assets/images/posters/brooklyn.jpg');
-const outsider = require('../../../../assets/images/posters/outsider.jpg');
-const got = require('../../../../assets/images/posters/got.jpg');
-const twd = require('../../../../assets/images/posters/twd.jpg');
-const chernobyl = require('../../../../assets/images/posters/chernobyl.jpg');
-const carbon = require('../../../../assets/images/posters/carbon.jpg');
-const hunters = require('../../../../assets/images/posters/hunters.jpg');
-const better = require('../../../../assets/images/posters/better.jpg');
-const west = require('../../../../assets/images/posters/west.jpg');
-const greys = require('../../../../assets/images/posters/greys.jpg');
-const vikings = require('../../../../assets/images/posters/vikings.jpg');
-const supernatural = require('../../../../assets/images/posters/supernatural.jpg');
-const handma = require('../../../../assets/images/posters/handma.jpg');
-const outlander = require('../../../../assets/images/posters/outlander.jpg');
-const homeland = require('../../../../assets/images/posters/homeland.jpg');
-const stranger = require('../../../../assets/images/posters/stranger.jpg');
+const posterArrow = require('../../assets/images/posters/arrow.jpg');
+const posterFear = require('../../assets/images/posters/ftwd.jpg');
+const rick = require('../../assets/images/posters/rick.jpg');
+const pose = require('../../assets/images/posters/pose.jpg');
+const brooklyn = require('../../assets/images/posters/brooklyn.jpg');
+const outsider = require('../../assets/images/posters/outsider.jpg');
+const got = require('../../assets/images/posters/got.jpg');
+const twd = require('../../assets/images/posters/twd.jpg');
+const chernobyl = require('../../assets/images/posters/chernobyl.jpg');
+const carbon = require('../../assets/images/posters/carbon.jpg');
+const hunters = require('../../assets/images/posters/hunters.jpg');
+const better = require('../../assets/images/posters/better.jpg');
+const west = require('../../assets/images/posters/west.jpg');
+const greys = require('../../assets/images/posters/greys.jpg');
+const vikings = require('../../assets/images/posters/vikings.jpg');
+const supernatural = require('../../assets/images/posters/supernatural.jpg');
+const handma = require('../../assets/images/posters/handma.jpg');
+const outlander = require('../../assets/images/posters/outlander.jpg');
+const homeland = require('../../assets/images/posters/homeland.jpg');
+const stranger = require('../../assets/images/posters/stranger.jpg');
 
 const watching = [
   {
