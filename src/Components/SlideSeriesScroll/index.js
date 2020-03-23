@@ -8,17 +8,20 @@ export default function SlideSeriesScroll({data}) {
     <ScrollView horizontal={true}>
       {data.map((image, index) => {
         return (
-          <Image
-            source={image.poster}
-            resizeMode="cover"
-            style={{
-              width: 116,
-              height: 170,
-              borderWidth: 2,
-              borderRadius: 10,
-              margin: 5,
-            }}
-          />
+          <View key={index}>
+            <Image
+              key={index}
+              source={{uri: image.thumb}}
+              resizeMode="cover"
+              style={{
+                width: 116,
+                height: 170,
+                borderWidth: 2,
+                borderRadius: 10,
+                margin: 5,
+              }}
+            />
+          </View>
         );
       })}
     </ScrollView>

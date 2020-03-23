@@ -1,130 +1,20 @@
-import * as React from 'react';
-import {Text, View, Image} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-
-import Home from './Screens/Home';
-
-function HomeScreen() {
-  return <Home />;
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-function DownloadScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-function UserScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
-
-function MyTabs() {
-  return (
-    <Tab.Navigator
-      initialRouteName="Inicio"
-      tabBarOptions={{
-        activeTintColor: '#4aa5da',
-        inactiveTintColor: '#808080',
-        style: {
-          backgroundColor: 'rgba(23, 27, 30, 1)',
-          borderTopColor: 'rgba(23, 27, 30, 1)',
-        },
-        tabStyle: {
-          elevation: 3,
-        },
-        labelStyle: {
-          fontSize: 13,
-        },
-      }}>
-      <Tab.Screen
-        options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({color, size}) => (
-            <SimpleLineIcons name="home" color={color} size={size} />
-          ),
-        }}
-        name="Home"
-        component={HomeScreen}
-      />
-
-      <Tab.Screen
-        options={{
-          tabBarLabel: 'Busca',
-          tabBarIcon: ({color, size}) => (
-            <SimpleLineIcons name="magnifier" color={color} size={size} />
-          ),
-        }}
-        name="Busca"
-        component={SettingsScreen}
-      />
-
-      <Tab.Screen
-        options={{
-          tabBarLabel: 'Downloads',
-          tabBarIcon: ({color, size}) => (
-            <SimpleLineIcons name="cloud-download" color={color} size={size} />
-          ),
-        }}
-        name="Downloads"
-        component={DownloadScreen}
-      />
-
-      <Tab.Screen
-        options={{
-          tabBarLabel: 'Minha área',
-          tabBarIcon: ({color, size}) => (
-            <SimpleLineIcons name="user" color={color} size={size} />
-          ),
-        }}
-        name="Minha área"
-        component={UserScreen}
-      />
-    </Tab.Navigator>
-  );
-}
-
-// function MyStack() {
-//   return (
-//     <Stack.Navigator>
-//       <Stack.Screen
-//         options={{
-//           headerTransparent: true,
-//           headerBackground: () => (
-//             <Image source={logo} style={{width: 40, height: 40}} />
-//           ),
-//         }}
-//         name="Home"
-//         component={HomeScreen}
-//       />
-//       <Stack.Screen name="Notifications" component={SettingsScreen} />
-//       <Stack.Screen name="Profile" component={DownloadScreen} />
-//       <Stack.Screen name="Settings" component={UserScreen} />
-//     </Stack.Navigator>
-//   );
-// }
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
-  );
-}
+const posterArrow = 'https://artworks.thetvdb.com/banners/posters/257655-19.jpg';
+const posterFear = 'https://artworks.thetvdb.com/banners/posters/290853-8.jpg';
+const rick = 'https://artworks.thetvdb.com/banners/posters/275274-2.jpg';
+const pose = 'https://artworks.thetvdb.com/banners/posters/5b0f1a390c3a1_t.jpg';
+const brooklyn = 'https://artworks.thetvdb.com/banners/posters/269586-11.jpg';
+const outsider = 'https://artworks.thetvdb.com/banners/series/365480/posters/62042220_t.jpg';
+const got = 'https://artworks.thetvdb.com/banners/posters/121361-4.jpg';
+const twd = 'https://artworks.thetvdb.com/banners/posters/153021-6_t.jpg';
+const chernobyl = 'https://artworks.thetvdb.com/banners/posters/5cc12861c93e4.jpg';
+const carbon = 'https://artworks.thetvdb.com/banners/posters/332331-8.jpg';
+const hunters = 'https://artworks.thetvdb.com/banners/series/372081/posters/62039182.jpg';
+const better = 'https://artworks.thetvdb.com/banners/posters/273181-1.jpg';
+const west = 'https://artworks.thetvdb.com/banners/posters/296762-3.jpg';
+const greys = 'https://artworks.thetvdb.com/banners/posters/73762-9.jpg';
+const vikings = 'https://artworks.thetvdb.com/banners/posters/260449-3.jpg';
+const supernatural = 'https://artworks.thetvdb.com/banners/posters/78901-35.jpg';
+const handma = 'https://artworks.thetvdb.com/banners/posters/321239-3.jpg';
+const outlander = 'https://artworks.thetvdb.com/banners/posters/270408-2.jpg';
+const homeland =  'https://artworks.thetvdb.com/banners/posters/247897-13.jpg';
+const stranger =  'https://artworks.thetvdb.com/banners/posters/305288-4.jpg'

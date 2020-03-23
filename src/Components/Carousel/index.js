@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {connect} from 'react-redux'
 import {View, Dimensions} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
@@ -11,13 +11,10 @@ import {
   CarouselBackgroundView,
 } from './styles';
 
-const bannerThe100 = require('../../../assets/images/banners/the100.jpg');
-const bannerStranger = require('../../../assets/images/banners/stranger.jpg');
-const bannerArrow = require('../../../assets/images/banners/legends.jpg');
-
 const windowWidth = Dimensions.get('window').width;
 
-export default class CarouselComponent extends Component {
+class CarouselComponent extends Component {
+  
   constructor(props) {
     super();
     this.state = {
@@ -30,20 +27,6 @@ export default class CarouselComponent extends Component {
 
   init() {
     this.state = {
-      videos: [
-        {
-          id: 'WpIAc9by5iU',
-          thumbnail: bannerStranger,
-        },
-        {
-          id: 'sNPnbI1arSE',
-          thumbnail: bannerArrow,
-        },
-        {
-          id: 'VOgFZfRVaww',
-          thumbnail: bannerThe100,
-        },
-      ],
       activeSlide: 0,
     };
 
@@ -68,7 +51,7 @@ export default class CarouselComponent extends Component {
             console.log('clicked to index', index);
             this._carousel.snapToItem(index);
           }}>
-          <CurrentVideoImage source={item.thumbnail} />
+          <CurrentVideoImage source={{uri: item.thumb}} />
         </CurrentVideoTO>
         {/*<NextVideoImage source={{ uri: this.state.currentVideo.nextVideoId }}/>*/}
         {/* <VideoTitleText>{item.title}</VideoTitleText> */}
@@ -77,13 +60,14 @@ export default class CarouselComponent extends Component {
   };
 
   render() {
+    const {seriesBanner} = this.props;
     return (
       <CarouselBackgroundView>
         <Carousel
           ref={c => {
             this._carousel = c;
           }}
-          data={this.state.videos}
+          data={seriesBanner}
           renderItem={this._renderItem.bind(this)}
           onSnapToItem={this.handleSnapToItem.bind(this)}
           sliderWidth={windowWidth}
@@ -97,7 +81,7 @@ export default class CarouselComponent extends Component {
             alignItems: 'center',
           }}>
           <Pagination
-            dotsLength={this.state.videos.length}
+            dotsLength={seriesBanner.length}
             activeDotIndex={this.state.activeSlide}
             dotStyle={{
               backgroundColor: 'white',
@@ -110,3 +94,10 @@ export default class CarouselComponent extends Component {
     );
   }
 }
+
+
+const mapStateToProps = (state) => ({
+  seriesBanner: state.seriesReducer.seriesBanner
+})
+
+export default connect(mapStateToProps)(CarouselComponent)
