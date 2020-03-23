@@ -14,6 +14,7 @@ import AllSeries from './Screens/Series/allSeries'
 import Profile from './Screens/Profile'
 import Search from './Screens/Search'
 
+
 function SignInScreen({navigation}){
   return <SignIn navigation={navigation} ></SignIn>
 }
@@ -39,9 +40,9 @@ function SearchScreen() {
   );
 }
 
-function UserScreen() {
+function UserScreen({navigation}) {
   return (
-   <Profile></Profile>
+   <Profile navigation={navigation}></Profile>
   );
 }
 
@@ -154,5 +155,28 @@ export function MyTopTabs() {
       <TopTab.Screen name="Pagina inicial" component={SeriesScreens} />
       <TopTab.Screen name="Séries" component={AllseriesScreens} />
     </TopTab.Navigator>
+  );
+}
+
+const TopTabProfile = createMaterialTopTabNavigator();
+
+export function MyTopTabsProfile() {
+  return (
+    <TopTabProfile.Navigator
+      initialRouteName="Minha Conta"
+      tabBarOptions={{
+        indicatorStyle: {
+          borderBottomColor: '#4aa5da',
+          borderBottomWidth: 2,
+        },
+        activeTintColor: '#4aa5da',
+        inactiveTintColor: '#808080',
+        labelStyle: {fontSize: 15, fontWeight: 'bold', lineHeight: 80},
+
+        style: {backgroundColor: '#171b1e', height: 80},
+      }}>
+      <TopTabProfile.Screen name="Minha Conta" component={SeriesScreens} />
+      <TopTabProfile.Screen name="Segurança" component={AllseriesScreens} />
+    </TopTabProfile.Navigator>
   );
 }

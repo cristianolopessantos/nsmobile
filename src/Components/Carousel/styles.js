@@ -4,7 +4,7 @@ const windowWidth = Dimensions.get('window').width;
 
 export const CarouselBackgroundView = styled.View`
   height: 256px;
-  width: ${windowWidth};
+  width: ${windowWidth}px;
 `;
 
 export const CurrentVideoImage = styled.Image.attrs({
