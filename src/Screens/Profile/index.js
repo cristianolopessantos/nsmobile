@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import { View,Text,ScrollView } from 'react-native';
 import Button from '../../Components/Button';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -7,6 +7,11 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Entypo from 'react-native-vector-icons/Entypo';
 import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
+import {
+  Layout,
+  Toggle,
+  Select,
+} from '@ui-kitten/components';
 import {MyTopTabsProfile} from '../../routes'
 
 import { Background, Container, ProfileView, ProfileInfos, Form, FormInput } from './styles';
@@ -14,6 +19,21 @@ import { Background, Container, ProfileView, ProfileInfos, Form, FormInput } fro
 export default function Profile({navigation}) {
 
   const passwordRef = useRef();
+  const [checked, setChecked] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOptionTwo, setSelectedOptionTwo] = useState(null);
+  const [selectedOptionThree, setSelectedOptionThree] = useState(null);
+
+  const resolution = [
+    { text: '240' },
+    { text: '480' },
+    { text: '720' },
+  ];
+
+  const onCheckedChange = (isChecked) => {
+    setChecked(isChecked);
+  };
+
   function handleSubmit() {
     // dispatch(signInRequest(email, password));
     navigation.navigate('Voltar')
@@ -58,6 +78,7 @@ export default function Profile({navigation}) {
                 <FormInput
                   secureTextEntry
                   placeholder="Digite sua senha novamente"
+                  ref={passwordRef}
                   returnKeyType="send"
                   onSubmitEditing={handleSubmit}
                 />
@@ -65,7 +86,54 @@ export default function Profile({navigation}) {
               <Button onPress={handleSubmit} backColor >Redefinir senha</Button>
               
             </View>
-            <Text tabLabel='Preferências'>project</Text>
+            <View tabLabel='Preferências'>
+              <Layout style={{ flexDirection: 'row',flexWrap: 'wrap', marginTop: 20}}>
+                <Text></Text>
+                <Toggle
+                  text={`Mostrar dicas na pagina inicial`}
+                  checked={checked}
+                  onChange={onCheckedChange}
+                />
+              </Layout>
+
+              <Layout style={{ flexDirection: 'row',flexWrap: 'wrap', marginTop: 20, alignItems: 'center'}}>
+                <Text style={{fontSize:12, marginRight: 5}}>Qualidade do vídeo apresentado no iPad </Text>
+                <Select
+                    data={resolution}
+                    size='small'
+                    style={{maxWidth: 150}}
+                    selectedOption={selectedOption}
+                    placeholder={'Qualidade'}
+                    onSelect={setSelectedOption}
+                  />
+              </Layout>
+             
+              
+              <Layout style={{ flexDirection: 'row',flexWrap: 'wrap', marginTop: 20, alignItems: 'center'}}>
+                <Text style={{fontSize:12, marginRight: 5}}>Qualidade do vídeo apresentado no iPhone</Text>
+                <Select
+                    data={resolution}
+                    size='small'
+                    style={{maxWidth: 150}}
+                    selectedOption={selectedOptionTwo}
+                    placeholder={'Qualidade'}
+                    value={selectedOptionTwo}
+                    onSelect={setSelectedOptionTwo}
+                  />
+              </Layout>
+
+              <Layout style={{ flexDirection: 'row',flexWrap: 'wrap', marginTop: 20, alignItems: 'center'}}>
+                <Text style={{fontSize:12, marginRight: 5}}>Qualidade do vídeo apresentado no Android</Text>
+                <Select
+                    data={resolution}
+                    size='small'
+                    style={{maxWidth: 150}}
+                    selectedOption={selectedOptionThree}
+                    placeholder={'Qualidade'}
+                    onSelect={setSelectedOptionThree}
+                  />
+              </Layout>
+            </View>
           </ScrollableTabView>
          
           

@@ -8,6 +8,7 @@ export const Container = styled.View`
   flex:1
   justify-content: center;
   align-items: center;
+  padding-bottom:16px;
 `;
 
 export const Background = styled(LinearGradient).attrs({

@@ -7,12 +7,15 @@ import CarouselComponent from '../../Components/Carousel';
 import SlideSeriesScroll from '../../Components/SlideSeriesScroll';
 
 class Present extends Component {
+  
   render() {
-    const {series} = this.props;
+    const {series, navigation} = this.props;
     var data_watch = [];
     var data_recomends = [];
     var data_popular = [];
     var data_suspense = [];
+
+
     series.map(serie=>{
       switch(serie.flag){
         case 'watching':
@@ -38,13 +41,13 @@ class Present extends Component {
           <Background>
             <CarouselComponent />
             <TextLabel>Continuar assistindo</TextLabel>
-            <SlideSeriesScroll data={data_watch} />
+            <SlideSeriesScroll data={data_watch} navigation={navigation}/>
             <TextLabel>NetSeries recomenda</TextLabel>
-            <SlideSeriesScroll data={data_recomends} />
+            <SlideSeriesScroll data={data_recomends} navigation={navigation} />
             <TextLabel>Mais populares</TextLabel>
-            <SlideSeriesScroll data={data_popular} />
+            <SlideSeriesScroll data={data_popular} navigation={navigation} />
             <TextLabel>Suspense</TextLabel>
-            <SlideSeriesScroll data={data_suspense} />
+            <SlideSeriesScroll data={data_suspense} navigation={navigation}/>
           </Background>
         </Container>
       </ContainerBehind>

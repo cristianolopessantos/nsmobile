@@ -9,10 +9,11 @@ import SignIn from './Screens/SignIn';
 import SignUp from './Screens/SignUp';
 import Home from './Screens/Home';
 import Present from './Screens/Present';
-import SeriesList from './Screens/Series'
-import AllSeries from './Screens/Series/allSeries'
-import Profile from './Screens/Profile'
-import Search from './Screens/Search'
+import SeriesList from './Screens/Series';
+import AllSeries from './Screens/Series/allSeries';
+import Profile from './Screens/Profile';
+import Search from './Screens/Search';
+import Details from './Screens/DetailsSeries'
 
 
 function SignInScreen({navigation}){
@@ -28,9 +29,9 @@ function HomeScreen({navigation}){
 }
 
 
-function PresentScreen() {
+function PresentScreen({navigation}) {
   return (
-     <Present/>
+     <Present />
   )
 }
 
@@ -46,16 +47,22 @@ function UserScreen({navigation}) {
   );
 }
 
-function SeriesScreens(){
+function SeriesScreens({navigation}){
   return(
-    <SeriesList></SeriesList>
+    <SeriesList navigation={navigation}></SeriesList>
   );
 }
 
-function AllseriesScreens(){
+function AllseriesScreens({navigation}){
   return(
-   <AllSeries></AllSeries>
+   <AllSeries navigation={navigation}></AllSeries>
   );
+}
+
+function DetailsScreen({navigation,route}){
+  return (
+    <Details route={route} navigation={navigation}/>
+  )
 }
 
 const Stack = createStackNavigator();
@@ -75,6 +82,15 @@ export function MyStack({navigation}) {
       <Stack.Screen name="Home" options={{
         headerShown: false
       }}component={HomeScreen}/>
+
+      <Stack.Screen name="Detalhes" options={{
+          title: 'Detalhes',
+          headerTransparent: false,
+          headerTintColor: 'white', 
+          headerStyle: {
+            backgroundColor: '#000',
+          },     
+      }}component={DetailsScreen}/>
         
     
     </Stack.Navigator>

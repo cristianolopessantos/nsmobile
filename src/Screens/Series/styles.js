@@ -28,7 +28,8 @@ export const SeriesList = styled.View`
 
 export const ContainerBehind = styled.View`
   flex: 1;
-  background-color: #000;
+  background-color: rgba(23, 27, 30, 1);
+  padding-bottom:16px;
 `;
 
 export const Container = styled.ScrollView.attrs({
