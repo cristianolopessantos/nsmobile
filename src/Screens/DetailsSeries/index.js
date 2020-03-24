@@ -33,7 +33,7 @@ export class index extends Component {
           <Container>
             <Image source={{uri: found.poster}} resizeMode='contain' style={{width:'100%', height: 240, opacity:0.3}}/>
             <Infos>
-              <TextName>{found.name}</TextName>
+              <TextName>{found.title}</TextName>
               <TextSeason>{found.season} temporadas</TextSeason>
               <Layout style={{minWidth: 200, borderRadius:10,marginTop:10}}>
                 <Select

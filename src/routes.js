@@ -35,9 +35,9 @@ function PresentScreen({navigation}) {
   )
 }
 
-function SearchScreen() {
+function SearchScreen({props}) {
   return (
-    <Search/>
+    <Search props={props}/>
   );
 }
 
@@ -85,7 +85,7 @@ export function MyStack({navigation}) {
 
       <Stack.Screen name="Detalhes" options={{
           title: 'Detalhes',
-          headerTransparent: false,
+          headerTransparent: true,
           headerTintColor: 'white', 
           headerStyle: {
             backgroundColor: '#000',

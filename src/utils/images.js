@@ -119,11 +119,25 @@
   CRIME_POSTER: 'https://artworks.thetvdb.com/banners/fanart/original/289108-31_t.jpg',
   CRIME_BANNER: 'https://artworks.thetvdb.com/banners/graphical/289108-g_t.jpg',
 
-  BOJACK_POSTER :  'https://artworks.thetvdb.com/banners/fanart/original/282254-1_t.jpg',
-  THE_HUNDRED_POSTER :  'https://artworks.thetvdb.com/banners/fanart/original/268592-5_t.jpg',
+  BOJACK: 'https://artworks.thetvdb.com/banners/posters/282254-6.jpg',
+  BOJACK_POSTER :  'https://artworks.thetvdb.com/banners/fanart/original/282254-11_t.jpg',
+  BOJACK_BANNER: 'https://artworks.thetvdb.com/banners/graphical/282254-g2_t.jpg',
+
+  THE_HUNDRED: 'https://artworks.thetvdb.com/banners/posters/268592-2.jpg',
+  THE_HUNDRED_POSTER :  'https://artworks.thetvdb.com/banners/fanart/original/268592-2_t.jpg',
+  THE_HUNDRED_BANNER: 'https://artworks.thetvdb.com/banners/graphical/268592-g2_t.jpg',
+
+  SCANDAL: 'https://artworks.thetvdb.com/banners/posters/248841-1.jpg',
   SCANDAL_POSTER :  'https://artworks.thetvdb.com/banners/fanart/original/248841-9_t.jpg',
+  SCANDAL_BANNER: 'https://artworks.thetvdb.com/banners/graphical/248841-g2_t.jpg',
+
+  HTGWM: 'https://artworks.thetvdb.com/banners/posters/281620-1.jpg',
   HTGWM_POSTER :  'https://artworks.thetvdb.com/banners/fanart/original/281620-1_t.jpg',
-  MODERN_FAMILY_POSTER :  'https://artworks.thetvdb.com/banners/fanart/original/95011-23_t.jpg',
+  HTGWM_BANNER: 'https://artworks.thetvdb.com/banners/graphical/281620-g4_t.jpg',
+
+  MODERN: 'https://artworks.thetvdb.com/banners/posters/95011-3.jpg',
+  MODERN_POSTER :  'https://artworks.thetvdb.com/banners/fanart/original/95011-23_t.jpg',
+  MODERN_BANNER: 'https://artworks.thetvdb.com/banners/text/95011_t.jpg',
 }
 
 export function getImages(code){

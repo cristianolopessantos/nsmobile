@@ -39,6 +39,7 @@ class Present extends Component {
       <ContainerBehind>
         <Container>
           <Background>
+            <TextLabel>Acabaram de sair</TextLabel>
             <CarouselComponent />
             <TextLabel>Continuar assistindo</TextLabel>
             <SlideSeriesScroll data={data_watch} navigation={navigation}/>

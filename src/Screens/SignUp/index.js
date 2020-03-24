@@ -53,6 +53,7 @@ export default function SignUp({navigation}) {
           <FormInput
             secureTextEntry
             placeholder="Digite sua senha"
+            ref={passwordRef}
             returnKeyType="next"
             onSubmitEditing={() => passwordConfirmRef.current.focus()}
           />

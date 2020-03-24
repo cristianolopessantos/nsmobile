@@ -51,7 +51,7 @@ class CarouselComponent extends Component {
             console.log('clicked to index', index);
             this._carousel.snapToItem(index);
           }}>
-          <CurrentVideoImage source={{uri: item.thumb}} />
+          <CurrentVideoImage source={{uri: item.banner}} />
         </CurrentVideoTO>
         {/*<NextVideoImage source={{ uri: this.state.currentVideo.nextVideoId }}/>*/}
         {/* <VideoTitleText>{item.title}</VideoTitleText> */}

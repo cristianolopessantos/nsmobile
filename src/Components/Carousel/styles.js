@@ -3,14 +3,15 @@ import {Dimensions} from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 
 export const CarouselBackgroundView = styled.View`
-  height: 256px;
-  width: ${windowWidth}px;
+  margin-top: -70px;
+  height: 240px;
+  width: 100%;
 `;
 
 export const CurrentVideoImage = styled.Image.attrs({
   resizeMode: 'contain',
 })`
-  width: 760px;
+  width: ${windowWidth}px;
   height: 256px;
 `;
 

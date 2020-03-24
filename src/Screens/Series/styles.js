@@ -9,6 +9,7 @@ export const Background = styled(LinearGradient).attrs({
   colors: ['#252533', '#171b1e'],
 })`
   flex: 1;
+  padding-top:16px;
 `;
 
 export const TextHeader = styled.Text`
@@ -41,7 +42,8 @@ export const Container = styled.ScrollView.attrs({
 export const TextLabel = styled.Text`
   color: white;
   font-weight: bold;
-  margin-left: 5px;
+  margin-left: 10px;
   margin-bottom: 5px;
   font-size: 20px;
+  padding-left:5px;
 `;
