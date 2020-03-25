@@ -1,74 +1,88 @@
-import React, { Component } from 'react'
-import { View, Text, Image } from 'react-native'
-import { Layout, Select } from '@ui-kitten/components';
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, {useState, useEffect} from 'react'
+import {View, Text} from 'react-native'
+import {Layout,Select} from '@ui-kitten/components'
+import { connect, useSelector } from 'react-redux'
+import {Background, Container, ImgPoster, Infos, TextName, TextSeason,
+     FlatListEpisodes, ViewItem,ViewEps, ViewRowInfo,ImageEpisode, TextInfo} from './styles'
 
-import {Background, Container, Infos, TextName, TextSeason} from './styles'
+const Details = ({route, navigation}) => {
+  const { itemId } = route.params;
 
-export class index extends Component {
+  const [series] = useState(useSelector(state => state.seriesReducer.series));
+  const [episodes] = useState(useSelector(state => state.episodesReducer.episodes));
+  const [seasonEpisodes,setSeasonEpisodes] = useState(useSelector(state => state.episodesReducer.episodes));
+
+  const [selectedOption, setSelectedOption] = useState(2);
+  const found = series.find(element => element.id === itemId);
+  const num_seasons = found.season;
+  const aux = [{text: 'Todos os episódios', id:0}];
   
-  static propTypes = {
-    prop: PropTypes
+  var iterator = 1;
+  while(iterator<=num_seasons){
+    aux.push({text: `${iterator}ª temporada`,id:iterator})
+    iterator++;
   }
 
-  state = {
-    selectedOption: 0
-  }
-
-  getDetails = () => {
-    const {series,route} = this.props;
-    const { itemId } = route.params;
-    const found = series.find(element => element.id === itemId);
-    
-    const num_seasons = found.season;
-    const aux = [{}];
-    for(var i = 1; i <= num_seasons; i++){
-      aux.push({text: `${i}ª temporada`})
+  const handleSelect = (index) => {
+    if(index.id===0){
+      setSeasonEpisodes(episodes)
+    }else{
+      setSeasonEpisodes(episodes.filter(item=> item.season === index.id))
     }
+  }
+  
+  const  renderItem = ({item,index})=> {
+    return(
+      <ViewItem key={index}>
+        {item.eps.map((teste,index)=>{
+            return (
+              <ViewRowInfo>
+                  <ImageEpisode source={{uri: teste.thumb}} />
+                  <ViewEps key={index}>
+                    <TextSeason style={{color: 'white', fontWeight:'bold'}}>{teste.aired}</TextSeason>
+                    <TextInfo>{teste.name}</TextInfo>
+                    <TextInfo>{teste.released}</TextInfo>
+                  </ViewEps>
+              </ViewRowInfo>
+            )
+        })}
+      </ViewItem>
+    )
+  }
 
-    if(found && found!== undefined){
-      return (
-        <Background>
-          <Container>
-            <Image source={{uri: found.poster}} resizeMode='contain' style={{width:'100%', height: 240, opacity:0.3}}/>
-            <Infos>
+  return (
+    <Background>
+      <Container>
+        <ImgPoster source={{uri:found.poster}}/>
+        <Infos>
               <TextName>{found.title}</TextName>
               <TextSeason>{found.season} temporadas</TextSeason>
               <Layout style={{minWidth: 200, borderRadius:10,marginTop:10}}>
                 <Select
                   data={aux}
-                  size='medium'
-                  selectedOption={this.state.selectedOption}
-                  onSelect={()=>{
-                    this.setState({selectedOption:1})
-                  }}
+                  size='medium'                 
+                  placeholder={'Todos os episódios'}
+                  selectedOption={selectedOption}
+                  onSelect={handleSelect.bind(this)}
                 />
               </Layout>
+              <FlatListEpisodes
+                data={seasonEpisodes}
+                keyExtractor={(item) => item.season} renderItem={renderItem}
+              />
             </Infos>
-            
-          </Container>
-        </Background>
-      )
-    }else{
-      return null
-    }
-  }
-
-  render() {
-    
-    return (  
-      this.getDetails()
-    )
-  }
+      </Container>
+    </Background>
+  )
 }
 
 const mapStateToProps = (state) => ({
-  series: state.seriesReducer.series
+  series: state.seriesReducer.series,
+  episodes: state.episodesReducer.episodes
 })
 
 const mapDispatchToProps = {
   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(index)
+export default connect(mapStateToProps, mapDispatchToProps)(Details)

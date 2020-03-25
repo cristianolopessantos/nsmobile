@@ -84,7 +84,6 @@ export function MyStack({navigation}) {
       }}component={HomeScreen}/>
 
       <Stack.Screen name="Detalhes" options={{
-          title: 'Detalhes',
           headerTransparent: true,
           headerTintColor: 'white', 
           headerStyle: {
