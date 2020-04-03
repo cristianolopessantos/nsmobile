@@ -14,6 +14,7 @@ import AllSeries from './Screens/Series/allSeries';
 import Profile from './Screens/Profile';
 import Search from './Screens/Search';
 import Details from './Screens/DetailsSeries'
+import Play from './Screens/Play'
 
 
 const device = Platform.OS === 'ios';
@@ -68,6 +69,12 @@ function DetailsScreen({navigation,route}){
   )
 }
 
+function PlayScreen({navigation,route}){
+  return (
+    <Play route={route} navigation={navigation}/>
+  )
+}
+
 const Stack = createStackNavigator();
 export function MyStack({navigation}) {
   return (
@@ -92,6 +99,10 @@ export function MyStack({navigation}) {
           headerTintColor: 'white',         
          
       }}component={DetailsScreen}/>
+
+      <Stack.Screen name="Play" options={{
+        headerShown: true
+      }}component={Play}/>
         
     
     </Stack.Navigator>

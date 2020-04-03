@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Animated, StyleSheet } from 'react-native'
+import { ScrollView, Text, Animated, StyleSheet, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {Layout,Select} from '@ui-kitten/components'
@@ -14,10 +14,13 @@ export class Details extends Component {
   }
 
   renderEpisodesBySeason = episodes => {
+    const {navigation} = this.props;
     const aux = [];
     episodes.map(item=>{
       item.eps.map((episodio, index)=>{
         aux.push(
+          <TouchableOpacity onPress={()=>{
+            navigation.navigate('Play')}}>
           <ViewRowInfo>
             <ImageEpisode source={{uri: episodio.thumb}} />
             <ViewEps key={index}>
@@ -26,6 +29,7 @@ export class Details extends Component {
               <TextInfo>{episodio.released}</TextInfo>
             </ViewEps>
           </ViewRowInfo>
+          </TouchableOpacity>
         )
       })
     });
