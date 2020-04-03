@@ -12,7 +12,7 @@ export const Container = styled.View`
 `;
 
 export const Background = styled(LinearGradient).attrs({
-  colors: ['#252533', '#171b1e'],
+  colors: ['#000', '#000'],
 })`
   flex: 1;
 `;

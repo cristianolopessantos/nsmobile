@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View,Text} from 'react-native'
+import {Dimensions, Platform} from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
@@ -15,6 +15,9 @@ import Profile from './Screens/Profile';
 import Search from './Screens/Search';
 import Details from './Screens/DetailsSeries'
 
+
+const device = Platform.OS === 'ios';
+const TAM = Dimensions.get('window').height;
 
 function SignInScreen({navigation}){
   return <SignIn navigation={navigation} ></SignIn>
@@ -84,11 +87,10 @@ export function MyStack({navigation}) {
       }}component={HomeScreen}/>
 
       <Stack.Screen name="Detalhes" options={{
+          headerTitle: false,
           headerTransparent: true,
-          headerTintColor: 'white', 
-          headerStyle: {
-            backgroundColor: '#000',
-          },     
+          headerTintColor: 'white',         
+         
       }}component={DetailsScreen}/>
         
     
@@ -163,9 +165,9 @@ export function MyTopTabs() {
         },
         activeTintColor: '#4aa5da',
         inactiveTintColor: '#808080',
-        labelStyle: {fontSize: 15, fontWeight: 'bold', lineHeight: 80},
+        labelStyle: {fontSize: 15, fontWeight: 'bold', lineHeight: device? 80:40},
 
-        style: {backgroundColor: '#171b1e', height: 80},
+        style: {backgroundColor: '#171b1e', height: device? 80:40},
       }}>
       <TopTab.Screen name="Pagina inicial" component={SeriesScreens} />
       <TopTab.Screen name="Séries" component={AllseriesScreens} />

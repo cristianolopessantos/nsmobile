@@ -54,7 +54,7 @@
   WEST_POSTER: 'https://artworks.thetvdb.com/banners/fanart/original/296762-7_t.jpg',
   WEST_BANNER: 'https://artworks.thetvdb.com/banners/graphical/296762-g3_t.jpg',
 
-  GREYS : 'https://artworks.thetvdb.com/banners/posters/73762-9.jpg',
+  GREYS : 'https://artworks.thetvdb.com/banners/posters/73762-25.jpg',
   GREYS_POSTER : 'https://artworks.thetvdb.com/banners/fanart/original/73762-44_t.jpg',
   GREYS_BANNER : 'https://artworks.thetvdb.com/banners/graphical/73762-g30_t.jpg',
 

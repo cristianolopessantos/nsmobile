@@ -6,7 +6,7 @@ export const ContainerAll = styled.View`
 `;
 
 export const Background = styled(LinearGradient).attrs({
-  colors: ['#252533', '#171b1e'],
+  colors: ['#000', '#000'],
 })`
   flex: 1;
   padding-top:16px;
@@ -27,7 +27,7 @@ export const SeriesList = styled.View`
   align-items: center;
 `;
 
-export const ContainerBehind = styled.View`
+export const ContainerBehind = styled.SafeAreaView`
   flex: 1;
   background-color: rgba(23, 27, 30, 1);
   padding-bottom:16px;

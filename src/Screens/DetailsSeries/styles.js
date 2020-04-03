@@ -7,10 +7,16 @@ const width = Dimensions.get('window').width;
 
 export const Background = styled(LinearGradient).attrs({
   colors: ['#000', '#000'],
-})`flex:1`
+})`flex:1;  align-items: center`
 
 export const Container = styled.View`
   flex:1;
+  
+`;
+
+export const ContainerContent = styled.View`
+  flex:1;
+  align-items: center;
 `;
 
 export const ImgPoster = styled.Image`
@@ -20,6 +26,7 @@ export const ImgPoster = styled.Image`
 
 export const Infos = styled.View`
   flex:1;
+  align-items:center;
   align-items:center;
   flex-direction: column;
 `
@@ -45,8 +52,9 @@ export const ViewItem = styled.View`
 
 export const ViewRowInfo = styled.View`
   flex-direction: row;
-  width: ${width-50}px;
-  margin:5px;
+  width: ${width/1.05}px;
+  margin-horizontal:10px;
+  margin-vertical: 5px;
   background-color: #1c1c1e;
   border-radius:10px;
 `

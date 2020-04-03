@@ -13,7 +13,7 @@ export const Container = styled(ScrollView).attrs({
 })``;
 
 export const Background = styled(LinearGradient).attrs({
-  colors: ['#252533', '#171b1e'],
+  colors: ['#000', '#000'],
 })`
   flex: 1;
 `;

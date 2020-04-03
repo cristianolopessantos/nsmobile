@@ -1,88 +1,199 @@
-import React, {useState, useEffect} from 'react'
-import {View, Text} from 'react-native'
+import React, { Component } from 'react'
+import { ScrollView, Text, Animated, StyleSheet } from 'react-native'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import {Layout,Select} from '@ui-kitten/components'
-import { connect, useSelector } from 'react-redux'
-import {Background, Container, ImgPoster, Infos, TextName, TextSeason,
-     FlatListEpisodes, ViewItem,ViewEps, ViewRowInfo,ImageEpisode, TextInfo} from './styles'
+import {Background, ViewRowInfo, ImageEpisode, ViewEps, TextSeason, TextInfo} from './styles'
 
-const Details = ({route, navigation}) => {
-  const { itemId } = route.params;
-
-  const [series] = useState(useSelector(state => state.seriesReducer.series));
-  const [episodes] = useState(useSelector(state => state.episodesReducer.episodes));
-  const [seasonEpisodes,setSeasonEpisodes] = useState(useSelector(state => state.episodesReducer.episodes));
-
-  const [selectedOption, setSelectedOption] = useState(2);
-  const found = series.find(element => element.id === itemId);
-  const num_seasons = found.season;
-  const aux = [{text: 'Todos os episódios', id:0}];
-  
-  var iterator = 1;
-  while(iterator<=num_seasons){
-    aux.push({text: `${iterator}ª temporada`,id:iterator})
-    iterator++;
+export class Details extends Component {
+  state = {
+    scrollY: new Animated.Value(0),
+    offsetY: new Animated.Value(30),
+    selectedOption: 0,
+    filterEpisodes: null
   }
 
-  const handleSelect = (index) => {
-    if(index.id===0){
-      setSeasonEpisodes(episodes)
-    }else{
-      setSeasonEpisodes(episodes.filter(item=> item.season === index.id))
+  renderEpisodesBySeason = episodes => {
+    const aux = [];
+    episodes.map(item=>{
+      item.eps.map((episodio, index)=>{
+        aux.push(
+          <ViewRowInfo>
+            <ImageEpisode source={{uri: episodio.thumb}} />
+            <ViewEps key={index}>
+              <TextSeason style={{color: 'white', fontWeight:'bold'}}>{episodio.aired}</TextSeason>
+              <TextInfo>{episodio.name}</TextInfo>
+              <TextInfo>{episodio.released}</TextInfo>
+            </ViewEps>
+          </ViewRowInfo>
+        )
+      })
+    });
+    return aux;
+  }
+
+  headerSerie(){
+    const {series, route} = this.props;
+    const found = series.find(element => element.id === route.params.itemId);
+    return <Animated.View
+    style={[
+      styles.imageHeader,
+      {
+     
+        height: this.state.scrollY.interpolate({
+          inputRange: [0,120],
+          outputRange: [290,105],
+          extrapolate: 'clamp'
+        })
+      }
+    ]}>
+         <Animated.Image
+          style={[
+            styles.imageHeader,
+            {
+              opacity: this.state.scrollY.interpolate({
+                inputRange: [0,140],
+                outputRange: [1,0.2],
+                extrapolate:'clamp'
+              }),
+              height: this.state.scrollY.interpolate({
+                inputRange: [0,120],
+                outputRange: [250,100],
+                extrapolate: 'clamp'
+              })
+            }
+          ]}
+          source={{uri: found.poster}}
+        />
+
+        <Animated.Text
+          style={[
+            styles.textTitle,
+            {
+              top: this.state.scrollY.interpolate({
+                inputRange: [0,120],
+                outputRange: [0,-40],
+                extrapolate: 'clamp'
+              }),
+              fontSize: this.state.scrollY.interpolate({
+                inputRange: [0,120],
+                outputRange: [26,16],
+                extrapolate: 'clamp'
+              })
+            }
+          ]}
+        >
+          {found.title}
+        </Animated.Text>
+        <Animated.Text
+          style={[
+            styles.textTitle,
+            {
+              top: this.state.scrollY.interpolate({
+                inputRange: [0,120],
+                outputRange: [0,-40],
+                extrapolate: 'clamp'
+              }),
+              fontSize: this.state.scrollY.interpolate({
+                inputRange: [0,120],
+                outputRange: [16,10],
+                extrapolate: 'clamp'
+              })
+            }
+          ]}
+        >
+          {`${found.season} temporadas`}
+        </Animated.Text>
+      </Animated.View>
+   
+  }
+
+  handleSelect = index => {
+    const {episodes} = this.props;
+      this.setState({selectedOption: index.id})
+      const foundSeriesEpisodes = episodes.filter(item=> item.season === index.id)
+      this.setState({filterEpisodes: foundSeriesEpisodes })
+  }
+
+  renderSelect(){
+    const {series, route} = this.props;
+    const found = series.find(element => element.id === route.params.itemId);
+    const num_seasons = found.season;
+    const aux = [{text: 'Todos os episódios', id:0}];
+    var iterator = 1;
+    while(iterator<=num_seasons){
+      aux.push({text: `${iterator}ª temporada`,id:iterator})
+      iterator++;
     }
+    return (
+
+      <Layout style={{minWidth: 200, borderRadius:10,margin:10}}>      
+        <Select
+            data={aux}
+            size='medium'                 
+            placeholder={'Temporadas'}
+            selectedOption={2}
+            onSelect={this.handleSelect.bind(this)}
+          />
+      </Layout>
+    );
   }
-  
-  const  renderItem = ({item,index})=> {
-    return(
-      <ViewItem key={index}>
-        {item.eps.map((teste,index)=>{
-            return (
-              <ViewRowInfo>
-                  <ImageEpisode source={{uri: teste.thumb}} />
-                  <ViewEps key={index}>
-                    <TextSeason style={{color: 'white', fontWeight:'bold'}}>{teste.aired}</TextSeason>
-                    <TextInfo>{teste.name}</TextInfo>
-                    <TextInfo>{teste.released}</TextInfo>
-                  </ViewEps>
-              </ViewRowInfo>
-            )
-        })}
-      </ViewItem>
+
+  componentDidMount(){
+    Animated.spring(this.state.offsetY, {
+      toValue: 0,
+      speed: 6,
+      bounciness: 30,
+    }).start();
+  }
+
+  render() {
+    const {episodes} = this.props;
+    return (
+      <Background>
+        
+         {this.headerSerie()}         
+         {this.renderSelect()}
+      
+         <ScrollView
+          scrollEventThrottle={16}
+          onScroll={Animated.event(
+            [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}]
+          )}
+         >
+            <Animated.View
+            style={[
+              {transform: [
+                {translateY: this.state.offsetY}
+              ]}
+            ]}
+          >
+            {this.renderEpisodesBySeason(this.state.selectedOption === 0 ? episodes: this.state.filterEpisodes)}
+            </Animated.View>
+         </ScrollView>
+        
+      </Background>
     )
   }
-
-  return (
-    <Background>
-      <Container>
-        <ImgPoster source={{uri:found.poster}}/>
-        <Infos>
-              <TextName>{found.title}</TextName>
-              <TextSeason>{found.season} temporadas</TextSeason>
-              <Layout style={{minWidth: 200, borderRadius:10,marginTop:10}}>
-                <Select
-                  data={aux}
-                  size='medium'                 
-                  placeholder={'Todos os episódios'}
-                  selectedOption={selectedOption}
-                  onSelect={handleSelect.bind(this)}
-                />
-              </Layout>
-              <FlatListEpisodes
-                data={seasonEpisodes}
-                keyExtractor={(item) => item.season} renderItem={renderItem}
-              />
-            </Infos>
-      </Container>
-    </Background>
-  )
 }
 
 const mapStateToProps = (state) => ({
   series: state.seriesReducer.series,
-  episodes: state.episodesReducer.episodes
+  episodes: state.episodesReducer.episodes,
 })
 
 const mapDispatchToProps = {
   
 }
 
+const styles = StyleSheet.create({
+  imageHeader:{
+    width: '100%',
+  },
+  textTitle: {
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
+  }
+})
 export default connect(mapStateToProps, mapDispatchToProps)(Details)
