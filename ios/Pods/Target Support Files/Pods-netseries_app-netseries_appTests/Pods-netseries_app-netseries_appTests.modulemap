@@ -1,0 +1,6 @@
+module Pods_netseries_app_netseries_appTests {
+  umbrella header "Pods-netseries_app-netseries_appTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
